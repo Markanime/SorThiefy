@@ -20,7 +20,7 @@ public class CoinArrow : MonoBehaviour {
 		List<Coin> coins = availableCoins.GetCoins();
 		while (coins.Count >= 1)
 		{
-			yield return new WaitForSeconds(2f);
+			yield return new WaitForSeconds(0.5f);
 			if (coins.Count >= 1)
 				CheckVisibility(coins);
 		}
@@ -40,26 +40,10 @@ public class CoinArrow : MonoBehaviour {
 						return;
 					}
 			}
-
 		}
 		activateArrow = true;
 		target = transform.GetNearest(coins).transform;
 	}
-
-	private Coin GetNearestCoin(Vector2 position,List<Coin> coins)
-    {
-		Coin current = coins[0];
-		for (int i=1;i<coins.Count;i++)
-        {
-			var currentDistance = Vector2.Distance(current.transform.position, position);
-			var newDistance = Vector2.Distance(coins[i].transform.position, position);
-			if(currentDistance > newDistance)
-            {
-				current = coins[i];
-            }
-		}
-		return current;
-    }
 
 	void Update () {
         if (target)
