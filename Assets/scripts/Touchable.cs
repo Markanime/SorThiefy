@@ -10,7 +10,16 @@ public class Touchable : MonoBehaviour {
     {
         CheckGameObject(collision.gameObject);
     }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        CheckGameObject(collision.gameObject);
+    }
     void OnTriggerEnter2D(Collider2D collider)
+    {
+        CheckGameObject(collider.gameObject);
+    }
+    void OnTriggerStay2D(Collider2D collider)
     {
         CheckGameObject(collider.gameObject);
     }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour {
@@ -7,7 +6,7 @@ public class EnemyMove : MonoBehaviour {
 	private Transform[] templatePattern;
 	private List<Transform> pattern = new List<Transform>();
 	[SerializeField]
-	private float speed = 5;
+	public float speed = 5;
 	private Transform target;
 	private Rigidbody2D rb;
 	void Start() {

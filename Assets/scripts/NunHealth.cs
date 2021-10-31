@@ -26,6 +26,7 @@ public class NunHealth : MonoBehaviour {
 			GetComponent<NunController>().enabled = false;
 			damageAnimator.SetTrigger("die");
 			col.enabled = false;
+			ServiceLocator.GetService<LevelService>().GameOver();
 			enabled = false;
 			return;
 		}

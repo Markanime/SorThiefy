@@ -9,5 +9,6 @@ public class Coin : Touchable {
         nun.GetComponent<NunScore>().AddScore(Value);
         ServiceLocator.GetService<AvailableCoins>().RemoveCoin(this);
         GetComponent<Animator>().SetTrigger("grab");
+        Destroy(this);
     }
 }

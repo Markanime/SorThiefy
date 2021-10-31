@@ -18,9 +18,7 @@ public static class ServiceLocator
         {
             if (service != _services[type])
             {
-                var oldService = (_services[type] as UnityEngine.Component).gameObject;
                 _services[type] = service;
-                MonoBehaviour.Destroy(oldService);
             }
         }
         else
@@ -36,6 +34,12 @@ public static class ServiceLocator
         if (!_services.TryGetValue(type, out service))
             throw new Exception(String.Format("Service {0} not found",type.Name));
         return (T)service;
+    }
+
+    public static bool HasService<T>()
+    {
+        Type type = typeof(T);
+        return _services.ContainsKey(type);
     }
 
 }

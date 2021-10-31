@@ -5,6 +5,8 @@ using UnityEngine.Events;
 public class AvailableCoins : MonoBehaviour {
     public UnityEvent OnCoinRemoved;
     public UnityEvent OnAllCoinsRemoved;
+    public UnityEvent OnPanicMode;
+
     private List<Coin> coinList = new List<Coin>();
 
     void Awake()
@@ -33,5 +35,7 @@ public class AvailableCoins : MonoBehaviour {
         OnCoinRemoved.Invoke();
         if(coinList.Count <= 0) 
             OnAllCoinsRemoved.Invoke();
+        if (coinList.Count == 3)
+            OnPanicMode.Invoke();
     }
 }
