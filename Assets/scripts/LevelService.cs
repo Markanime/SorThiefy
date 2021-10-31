@@ -33,10 +33,12 @@ public class LevelService : MonoBehaviour {
 
     public void GameOver()
     {
+        level = 0;
+        totalScore = 0;
         ServiceLocator.GetService<ExitImage>().ShowImage(-1, () =>
-        {
-            SceneManager.LoadScene("menu");
-        });
+            {
+                SceneManager.LoadScene("menu");
+            });
     }
 
     void Awake()

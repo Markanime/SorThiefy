@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class CanvasScoreText : MonoBehaviour {
 	[SerializeField]
+	private string template = "Robbed Money:{0}\nTotal Robbed:{1}";
+	[SerializeField]
 	private NunScore nunScore;
 	[SerializeField]
 	private Text text;
@@ -16,7 +18,7 @@ public class CanvasScoreText : MonoBehaviour {
 	void Print()
     {
 		int current = nunScore.GetScore();
-		text.text = string.Format("Robbed Money:{0}\nTotal Robbed:{1}", current, totalScore+ current);
+		text.text = string.Format(template, current, totalScore+ current);
     }
 	
 }
