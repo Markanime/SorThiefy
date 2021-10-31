@@ -3,6 +3,10 @@
 [RequireComponent(typeof(NunController))]
 public class NunHealth : MonoBehaviour {
 	[SerializeField]
+	private AudioSource[] damageSound;
+	[SerializeField]
+	private AudioSource[] deadSound;
+	[SerializeField]
 	private Animator damageAnimator;
 	private float health = 100, nextDamage = 0, invencibleTime = 0;
 	private Blink blink;
@@ -26,6 +30,7 @@ public class NunHealth : MonoBehaviour {
 			GetComponent<NunController>().enabled = false;
 			damageAnimator.SetTrigger("die");
 			col.enabled = false;
+			foreach (var d in deadSound) { d.Play(); }
 			ServiceLocator.GetService<LevelService>().GameOver();
 			enabled = false;
 			return;
@@ -33,6 +38,7 @@ public class NunHealth : MonoBehaviour {
 		if(invencibleTime <= 0 && nextDamage > 0)
         {
 			damageAnimator.SetTrigger("damage");
+			foreach (var d in damageSound) { d.Play(); }
 			health -= nextDamage;
 			invencibleTime = 1;
 			blink.enabled = true;

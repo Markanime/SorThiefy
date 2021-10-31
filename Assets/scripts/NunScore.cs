@@ -5,7 +5,8 @@ public class NunScore : MonoBehaviour {
 	private int score;
 	[SerializeField]
 	private Animator winAnimation;
-
+	[SerializeField]
+	private AudioSource[] winSound;
 	void Start()
 	{
 		ServiceLocator.GetService<AvailableCoins>().OnAllCoinsRemoved.AddListener(Win);
@@ -17,6 +18,7 @@ public class NunScore : MonoBehaviour {
 		GetComponent<NunController>().enabled = false;
 		GetComponent<NunHealth>().enabled = false;
 		winAnimation.SetTrigger("win");
+		foreach (var d in winSound) { d.Play(); }
 		ServiceLocator.GetService<LevelService>().NextLevel(score);
 	}
 	public void AddScore(int score)

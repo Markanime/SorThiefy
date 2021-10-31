@@ -35,6 +35,7 @@ public class LevelService : MonoBehaviour {
     {
         level = 0;
         totalScore = 0;
+        ServiceLocator.GetService<MusicSevice>().Stop();
         ServiceLocator.GetService<ExitImage>().ShowImage(-1, () =>
             {
                 SceneManager.LoadScene("menu");

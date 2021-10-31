@@ -21,5 +21,6 @@ public class Menu : MonoBehaviour {
 	public void LoadGame()
     {
 		SceneManager.LoadScene("game");
+		ServiceLocator.GetService<MusicSevice>().Play();
     }
 }
